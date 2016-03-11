@@ -36,13 +36,12 @@ class StructureGenerator extends BaseGenerator
     public function generate(ParameterHolder $input, array $output = [])
     {
         $table_oid          = $this->checkRelationInformation();
-        $field_information = $this->getFieldInformation($table_oid);
+        $field_information  = $this->getFieldInformation($table_oid);
         $primary_key        = $this->getPrimaryKey($table_oid);
         $table_comment      = $this->getTableComment($table_oid);
 
         if ($table_comment === null) {
             $table_comment = <<<TEXT
-
 Class and fields comments are inspected from table and fields comments. Just add comments in your database and they will appear here.
 @see http://www.postgresql.org/docs/9.0/static/sql-comment.html
 TEXT;
